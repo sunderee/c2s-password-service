@@ -8,7 +8,7 @@ npm install
 
 # Run in development (watch) mode or production mode
 npm run start
-npm run build && npm run start:prod
+npm run start:prod
 
 # FOR DOCKER: build an image and run the container
 docker build -t <tag> .
@@ -37,3 +37,11 @@ The response should be something like this
 ```
 
 where `security` parameter ranges between 0 and 4.
+
+If deploying the app on Heroku, these are the necessary steps **before** pushing:
+
+```bash
+heroku git:remote -a <heroku-app-name>
+heroku config:set NPM_CONFIG_PRODUCTION=false
+heroku config:set NODE_ENV=production
+```
